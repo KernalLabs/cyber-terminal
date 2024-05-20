@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Document loaded"); // Debugging line to ensure script is running
     const input = document.getElementById('input');
     const output = document.getElementById('output');
 
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function displayWelcomeMessage() {
+        console.log("Displaying welcome message"); // Debugging line to ensure function is called
         const welcomeMessage = `
             <div>Welcome to KernelLabs Cyber Terminal!</div>
             <div>Type /help to see the list of available commands.</div>
