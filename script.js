@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const commands = {
         '/help': 'Available commands: /about, /journey, /projects, /contact, /blog, /clear',
-        '/about': 'I am KernelLabs, an aspiring cybersecurity professional passionate about learning and exploring the field of digital security. My journey in cybersecurity began with an interest in ethical hacking and has grown into a full-fledged pursuit of knowledge and skills.',
+        '/about': 'Hi Mike here also known as "KernelLabs" on GitHub, I am an aspiring cybersecurity professional passionate about learning and exploring the field of digital security. My journey in cybersecurity began with an interest in ethical hacking and has grown into a full-fledged pursuit of knowledge and skills.',
         '/journey': 'Starting from learning basic programming and networking, I have delved into various aspects of cybersecurity, including vulnerability assessment, penetration testing, and digital forensics. My projects reflect my growth and the practical application of my skills.',
         '/projects': '1. <a href="https://github.com/KernelLabs/port-scanner" target="_blank">Port Scanner</a>: A simple port scanner tool to identify open ports on a network.',
         '/contact': 'To contact me, please <a href="mailto:your-email@example.com">email me</a> or type "/form" to reveal a contact form.',
