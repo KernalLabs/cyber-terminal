@@ -1,0 +1,43 @@
+body {
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px green;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#terminal {
+    width: 80%;
+    max-width: 800px;
+    background-color: black;
+    padding: 20px;
+    border: 2px solid green;
+    box-shadow: 0 0 10px green;
+}
+
+#output {
+    min-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+#input-line {
+    display: flex;
+}
+
+#prompt {
+    margin-right: 10px;
+}
+
+#input {
+    background-color: black;
+    color: green;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1em;
+}
