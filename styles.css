@@ -50,7 +50,7 @@ body {
 
 .access-message {
     text-align: center;
-    margin-top: 21px;
+    margin-top: 20px;
 }
 
 .horizontal-menu {
@@ -61,4 +61,37 @@ body {
 .horizontal-menu div {
     display: inline-block;
     margin: 0 10px;
+}
+
+form {
+    background-color: black;
+    border: 2px solid green;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+form label {
+    color: green;
+}
+
+form input[type="text"], form textarea {
+    background-color: black;
+    color: green;
+    border: 1px solid green;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+form input[type="submit"], form button {
+    background-color: black;
+    color: green;
+    border: 1px solid green;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background-color: green;
+    color: black;
 }
