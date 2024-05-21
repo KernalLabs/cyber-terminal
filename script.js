@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Document loaded"); // Debugging line to ensure script is running
+    console.log("JavaScript is running"); // Debugging line to ensure script is running
     const input = document.getElementById('input');
     const output = document.getElementById('output');
     const riddleAnswer = "keyboard"; // Simple riddle answer for demonstration
