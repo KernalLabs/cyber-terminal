@@ -23,6 +23,7 @@ body {
     min-height: 300px;
     overflow-y: auto;
     margin-bottom: 10px;
+    padding: 10px;
 }
 
 #input-line {
@@ -40,4 +41,24 @@ body {
     outline: none;
     width: 100%;
     font-size: 1em;
+}
+
+.riddle-message {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.access-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.horizontal-menu {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.horizontal-menu div {
+    display: inline-block;
+    margin: 0 10px;
 }

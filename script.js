@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayRiddle() {
         const riddleMessage = `
-            <div>Welcome Traveler, please solve this riddle to prove you're human and gain access:</div>
-            <div>What has keys but can't open locks?</div>
+            <div class="riddle-message">
+                <div>Welcome Traveler, please solve this riddle to prove you're human and gain access:</div>
+                <div>What has keys but can't open locks?</div>
+            </div>
         `;
         output.innerHTML = riddleMessage;
     }
@@ -25,7 +27,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayMainScreen() {
         const welcomeMessage = `
             <div>Welcome to KernelLabs Cyber Terminal!</div>
-            <div>Available commands: /about, /journey, /projects, /contact, /blog, /clear</div>
+            <div class="horizontal-menu">
+                <div>/about</div>
+                <div>/journey</div>
+                <div>/projects</div>
+                <div>/contact</div>
+                <div>/blog</div>
+                <div>/clear</div>
+            </div>
             <div>Hi, I\'m Mike, also known as "Kernel Labs" on GitHub. I am an aspiring cybersecurity professional passionate about learning and exploring the field of digital security. My journey in cybersecurity began with an interest in ethical hacking and has grown into a full-fledged pursuit of knowledge and skills.</div>
             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
         `;
@@ -51,15 +60,25 @@ document.addEventListener('DOMContentLoaded', function() {
         output.scrollTop = output.scrollHeight;
     }
 
-    displayRiddle();
+    function init() {
+        if (localStorage.getItem('accessGranted') === 'true') {
+            displayMainScreen();
+        } else {
+            displayRiddle();
+        }
+    }
 
     input.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             const command = input.value.trim().toLowerCase();
-            if (checkRiddleAnswer(command)) {
-                displayMainScreen();
-            } else if (output.innerHTML.includes('riddle')) {
-                output.innerHTML += `<div>Incorrect answer. Please try again.</div>`;
+            if (localStorage.getItem('accessGranted') !== 'true') {
+                if (checkRiddleAnswer(command)) {
+                    localStorage.setItem('accessGranted', 'true');
+                    output.innerHTML += `<div class="access-message">Access Granted</div>`;
+                    setTimeout(displayMainScreen, 1000);
+                } else {
+                    output.innerHTML += `<div class="access-message">Access Denied. Please try again.</div>`;
+                }
             } else if (command) {
                 processCommand(command);
             }
@@ -73,4 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             form.style.display = 'none';
         }
     }
+
+    init();
 });
