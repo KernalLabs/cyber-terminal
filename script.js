@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function processCommand(command) {
+        output.innerHTML = ''; // Clear previous content
         if (commands[command]) {
             output.innerHTML = `<div>${commands[command]}</div>`;
             if (command === '/form') {
