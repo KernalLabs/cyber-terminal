@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayMainScreen() {
         const welcomeMessage = `
-            <div>Welcome to Mike's Cyber Terminal!</div>
+            <div>Welcome to KernelLabs Cyber Terminal!</div>
             <div class="horizontal-menu">
                 <div>Available Commands:</div>
                 <div>/about</div>
@@ -47,16 +47,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function processCommand(command) {
-        if (command === '/clear') {
-            output.innerHTML = '';
-            displayMainScreen();
-        } else if (commands[command]) {
-            output.innerHTML += `<div>${commands[command]}</div>`;
+        if (commands[command]) {
+            output.innerHTML = `<div>${commands[command]}</div>`;
             if (command === '/form') {
                 document.querySelector('form').style.display = 'block';
             }
         } else {
-            output.innerHTML += `<div>Unknown command: ${command}</div>`;
+            output.innerHTML = `<div>Unknown command: ${command}</div>`;
         }
         output.scrollTop = output.scrollHeight;
     }
