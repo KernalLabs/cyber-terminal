@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayMainScreen() {
         const welcomeMessage = `
-            <div>Welcome to KernelLabs Cyber Terminal!</div>
+            <div>Welcome to Mike's Cyber Terminal!</div>
             <div class="horizontal-menu">
+                <div>Available Commands:</div>
                 <div>/about</div>
                 <div>/journey</div>
                 <div>/projects</div>
