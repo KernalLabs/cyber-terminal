@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Document loaded"); // Debugging line to ensure script is running
     const input = document.getElementById('input');
     const output = document.getElementById('output');
+    const riddleAnswer = "keyboard"; // Simple riddle answer for demonstration
 
     const commands = {
         '/help': 'Available commands: /about, /journey, /projects, /contact, /blog, /clear',
@@ -13,40 +14,32 @@ document.addEventListener('DOMContentLoaded', function() {
         '/form': '<form action="mailto:your-email@example.com" method="post" enctype="text/plain"><label for="name">Name:</label><input type="text" id="name" name="name"><br><label for="message">Message:</label><textarea id="message" name="message"></textarea><br><input type="submit" value="Send"><button type="button" onclick="hideForm()">Cancel</button></form>',
     };
 
-    function displayWelcomeMessage() {
-        console.log("Displaying welcome message"); // Debugging line to ensure function is called
+    function displayRiddle() {
+        const riddleMessage = `
+            <div>Welcome Traveler, please solve this riddle to prove you're human and gain access:</div>
+            <div>What has keys but can't open locks?</div>
+        `;
+        output.innerHTML = riddleMessage;
+    }
+
+    function displayMainScreen() {
         const welcomeMessage = `
             <div>Welcome to KernelLabs Cyber Terminal!</div>
-            <div>Type /help to see the list of available commands.</div>
-            <div>Quick Tips:</div>
-            <ul>
-                <li>Type /about to learn more about me.</li>
-                <li>Type /journey to read about my journey in cybersecurity.</li>
-                <li>Type /projects to see my projects.</li>
-                <li>Type /contact to find out how to contact me.</li>
-                <li>Type /blog to read my blog posts.</li>
-                <li>Type /clear to clear the screen.</li>
-            </ul>
+            <div>Available commands: /about, /journey, /projects, /contact, /blog, /clear</div>
+            <div>Hi, I\'m Mike, also known as "Kernel Labs" on GitHub. I am an aspiring cybersecurity professional passionate about learning and exploring the field of digital security. My journey in cybersecurity began with an interest in ethical hacking and has grown into a full-fledged pursuit of knowledge and skills.</div>
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
         `;
         output.innerHTML = welcomeMessage;
     }
 
-    displayWelcomeMessage();
-
-    input.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            const command = input.value.trim().toLowerCase();
-            if (command) {
-                processCommand(command);
-                input.value = '';
-            }
-        }
-    });
+    function checkRiddleAnswer(answer) {
+        return answer.trim().toLowerCase() === riddleAnswer;
+    }
 
     function processCommand(command) {
         if (command === '/clear') {
             output.innerHTML = '';
-            displayWelcomeMessage();
+            displayMainScreen();
         } else if (commands[command]) {
             output.innerHTML += `<div>${commands[command]}</div>`;
             if (command === '/form') {
@@ -57,6 +50,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         output.scrollTop = output.scrollHeight;
     }
+
+    displayRiddle();
+
+    input.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            const command = input.value.trim().toLowerCase();
+            if (checkRiddleAnswer(command)) {
+                displayMainScreen();
+            } else if (output.innerHTML.includes('riddle')) {
+                output.innerHTML += `<div>Incorrect answer. Please try again.</div>`;
+            } else if (command) {
+                processCommand(command);
+            }
+            input.value = '';
+        }
+    });
 
     window.hideForm = function() {
         const form = document.querySelector('form');
