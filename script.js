@@ -42,19 +42,34 @@ document.addEventListener('DOMContentLoaded', function() {
         output.innerHTML = welcomeMessage;
     }
 
+    function displayCommands() {
+        const commandsMessage = `
+            <div class="horizontal-menu">
+                <div>Available Commands:</div>
+                <div>/about</div>
+                <div>/journey</div>
+                <div>/projects</div>
+                <div>/contact</div>
+                <div>/blog</div>
+                <div>/clear</div>
+            </div>
+        `;
+        return commandsMessage;
+    }
+
     function checkRiddleAnswer(answer) {
         return answer.trim().toLowerCase() === riddleAnswer;
     }
 
     function processCommand(command) {
-        output.innerHTML = ''; // Clear previous content
+        output.innerHTML = displayCommands(); // Clear previous content and display commands
         if (commands[command]) {
-            output.innerHTML = `<div>${commands[command]}</div>`;
+            output.innerHTML += `<div>${commands[command]}</div>`;
             if (command === '/form') {
                 document.querySelector('form').style.display = 'block';
             }
         } else {
-            output.innerHTML = `<div>Unknown command: ${command}</div>`;
+            output.innerHTML += `<div>Unknown command: ${command}</div>`;
         }
         output.scrollTop = output.scrollHeight;
     }
